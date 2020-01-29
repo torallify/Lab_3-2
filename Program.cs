@@ -85,16 +85,22 @@ namespace Lab_3_2
             {
                 Console.WriteLine("\n\nHere's what you got:");
                 Console.WriteLine(new string('=', 31));
-                
+
+                double itemPrice = 0;
+               
+                int count = 0;
                 foreach (KeyValuePair<string, int> kvPair in userList)
                 {
+                    
                     if (kvPair.Value > 0)
                     {                       
                         Console.WriteLine($"{kvPair.Value} X {kvPair.Key} (${inventoryDic[kvPair.Key]} each) = ${(inventoryDic[kvPair.Key])*(kvPair.Value)}");
-                    }
+                        itemPrice += inventoryDic[kvPair.Key];
+                        count++;
 
-
+                    }                   
                 }
+                Console.WriteLine($"\nAverage price per item in order was ${itemPrice / count}");
             }
 
         }
