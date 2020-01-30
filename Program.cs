@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Lab_3_2
 {
@@ -12,18 +13,18 @@ namespace Lab_3_2
                                                             { "apple", 0.99},
                                                             { "banana",0.59},
                                                             { "cauliflower",1.59},
-                                                            {"dragonfruit",2.19},
-                                                            {"Elderberry",1.79},
-                                                            {"figs",2.09},
-                                                            {"grapefruit",1.99},
-                                                            {"honeydew",3.49}, 
+                                                            { "dragonfruit",2.19},
+                                                            { "Elderberry",1.79},
+                                                            { "figs",2.09},
+                                                            { "grapefruit",1.99},
+                                                            { "honeydew",3.49}, 
             };
 
             
             Console.WriteLine("Welcome to Lucero's Market");
 
             Dictionary<string, int> userLists = new Dictionary<string, int>()
-                {                                           {"apple", 0},
+            {                                               { "apple", 0},
                                                             { "banana",0},
                                                             { "cauliflower",0},
                                                             { "dragonfruit",0},
@@ -78,7 +79,7 @@ namespace Lab_3_2
 
                 foreach (KeyValuePair<string, double> kvPair in inventoryDic)
                 {
-                    Console.WriteLine(String.Format("{0,-25} {1,-10}", kvPair.Key, $"${kvPair.Value}"));
+                    Console.WriteLine(String.Format("{0,-25} {1,-10}", kvPair.Key, $"{kvPair.Value.ToString("C", CultureInfo.CurrentCulture)}"));
                 }
             }
             static void PrintReceipt(Dictionary<string, double> inventoryDic, Dictionary< string, int> userList)
@@ -95,13 +96,13 @@ namespace Lab_3_2
                     if (kvPair.Value > 0)
                     {                       
                         
-                        Console.WriteLine($"{(kvPair.Value)} X {kvPair.Key} (${(inventoryDic[kvPair.Key]).ToString("0.00")} each) = ${((inventoryDic[kvPair.Key])*(kvPair.Value)).ToString("0.00")}");
+                        Console.WriteLine($"{(kvPair.Value)} X {kvPair.Key} ({(inventoryDic[kvPair.Key]).ToString("C",CultureInfo.CurrentCulture)} each) = {((inventoryDic[kvPair.Key])*(kvPair.Value)).ToString("C", CultureInfo.CurrentCulture)}");
                         itemPrice += inventoryDic[kvPair.Key];
                         count++;
 
                     }                   
                 }
-                Console.WriteLine($"\nAverage price per item in order was ${(itemPrice / count).ToString("0.00")}");
+                Console.WriteLine($"\nAverage price per item in order was {(itemPrice / count).ToString("C", CultureInfo.CurrentCulture)}");
             }
 
         }
