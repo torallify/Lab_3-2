@@ -14,7 +14,7 @@ namespace Lab_3_2
                                                             { "banana",0.59},
                                                             { "cauliflower",1.59},
                                                             { "dragonfruit",2.19},
-                                                            { "Elderberry",1.79},
+                                                            { "elderberry",1.79},
                                                             { "figs",2.09},
                                                             { "grapefruit",1.99},
                                                             { "honeydew",3.49}, 
@@ -28,7 +28,7 @@ namespace Lab_3_2
                                                             { "banana",0},
                                                             { "cauliflower",0},
                                                             { "dragonfruit",0},
-                                                            { "Elderberry",0},
+                                                            { "elderberry",0},
                                                             { "figs",0},
                                                             { "grapefruit",0},
                                                             { "honeydew",0}
@@ -40,14 +40,15 @@ namespace Lab_3_2
                 PrintMenu(inventory);
 
                 Console.Write("\nWhat item would you like to order? ");
-                string userInput = Console.ReadLine();
+                string userInput = Console.ReadLine().ToLower();
+                
 
                 while (inventory.ContainsKey(userInput) == false )
                 {
                     
                     Console.WriteLine("\nSorry, we don't have those. Please try again.");
                     Console.Write("\nWhat item would you like to order? ");
-                    userInput = Console.ReadLine();
+                    userInput = Console.ReadLine().ToLower();
                 }
 
                 if (inventory.ContainsKey(userInput))
