@@ -94,13 +94,14 @@ namespace Lab_3_2
                     
                     if (kvPair.Value > 0)
                     {                       
-                        Console.WriteLine($"{kvPair.Value} X {kvPair.Key} (${inventoryDic[kvPair.Key]} each) = ${(inventoryDic[kvPair.Key])*(kvPair.Value)}");
+                        
+                        Console.WriteLine($"{(kvPair.Value).ToString("0.00")} X {kvPair.Key} (${(inventoryDic[kvPair.Key]).ToString("0.00")} each) = ${((inventoryDic[kvPair.Key])*(kvPair.Value)).ToString("0.00")}");
                         itemPrice += inventoryDic[kvPair.Key];
                         count++;
 
                     }                   
                 }
-                Console.WriteLine($"\nAverage price per item in order was ${itemPrice / count}");
+                Console.WriteLine($"\nAverage price per item in order was ${(itemPrice / count).ToString("0.00")}");
             }
 
         }
