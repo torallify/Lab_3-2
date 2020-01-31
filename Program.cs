@@ -34,7 +34,7 @@ namespace Lab_3_2
                                                             { "honeydew",0}
             };
 
-            char key;
+            
             do
             {
                 PrintMenu(inventory);
@@ -58,18 +58,7 @@ namespace Lab_3_2
                     Console.WriteLine($"\nAdding {userInput} to cart at ${inventory[userInput]}");
                 }            
 
-                Console.Write("\nWould you like to order anything else? Please enter (y/n) ");
-                key = Console.ReadKey().KeyChar;
-                key = char.ToLower(key);
-
-                while (key != 'y' && key != 'n')
-                {
-                    Console.Write("\nInvalid input. Please press y or n: ");
-                    key = Console.ReadKey().KeyChar;
-                    key = char.ToLower(key);
-                }
-
-            } while (key == 'y');
+            } while (UserContinue());
 
             PrintReceipt(inventory,userLists);
 
@@ -104,6 +93,24 @@ namespace Lab_3_2
                     }                   
                 }
                 Console.WriteLine($"\nAverage price per item in order was {(itemPrice / count).ToString("C", CultureInfo.CurrentCulture)}");
+            }
+            
+            static bool UserContinue()
+            {
+                char key;
+                do
+                {
+                    Console.Write("\nWould you like to order anything else? Please enter (y/n) ");
+                    key = Console.ReadKey().KeyChar;
+                    key = char.ToLower(key);
+                    if (key == 'n')
+                    {
+                        return false;
+                    }
+                    Console.WriteLine();
+                    
+                } while (key != 'y');
+                return true;
             }
 
         }
